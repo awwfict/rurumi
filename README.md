@@ -1,57 +1,56 @@
 # Recurrent
-Recurrent is a python library for natural language parsing and formatting of dates and recurring
-events. It turns strings like "every tuesday and thurs until next month"
-into [RFC-compliant RRULES][1], to be fed into a calendar api or [python-dateutil's][2]
+Recurrent - это python библиотека для парсинга повторяющихся событий и дат использующая обработку естественного языка. Rurumi - это перевод оригинальной библиотеки на русский
+recurrent обращает строки типа «каждый вторник и четверг до конца этого месяца» в [RFC-compliant RRULES][1], для совмещения с календарем или [python-dateutil's][2]
 rrulestr.  It will also accept such rrules and return a natural language representation of them.
 
 ```sh
 pip install recurrent
 ```
 
-## Examples
-### Date times
-* next tuesday
-* tomorrow
-* in an hour
-* in 15 mins
-* Mar 4th at 9am
-* 3rd Thu in Apr at 10 o'clock
-* 40th day of 2020
+## примеры
+### конкретные даты
+* в следующий вторник 
+* завтра
+* в течение часа
+* через 15 минут
+* 4 марта в 9 утра
+* 3 четверг апреля в 10 часов
+* на 40 день 2020 года
 
-### Recurring events
-* on weekdays
-* every fourth of the month from jan 1 2010 to dec 25th 2020
-* each thurs until next month
-* once a year on the fourth thursday in november
-* tuesdays and thursdays at 3:15
-* wednesdays at 9 o'clock
-* fridays at 11am
-* daily except in June
-* daily except on June 23rd and July 4th
-* every monday except each 2nd monday in March
-* fridays twice
-* fridays 3x
-* every other friday for 5 times
-* every 3 fridays from november until february
-* fridays starting in may for 10 occurrences
-* tuesdays for the next six weeks
-* every Mon-Wed for the next 2 months
-* every Mon thru Wed for the next year
-* every other Fri for the next three years
-* monthly on the first and last instance of wed and fri
-* every Tue and Fri in week 14
-* every year on Dec 25
+### повторяющиеся события
+* в будни
+* каждрое четвертое число месяца начиная с первого января 2010 и заканчивая 25 декабря 2020
+* каждый вторник до следующего месяца месяца
+* раз в год в четвертый четверг ноября
+* по вторникам и четвергам в 15:15
+* по средам в 9 часов
+* по пятницам в 11
+* ежедневно за исключением июня
+* ежедневно за исключением 23 июня и 4 июля
+* каждый понедельник кроме второго понедельника в марте
+* дважды по пятницам
+* трижды в пятницу
+* через пятницу 5 раз
+* каждые три пятницы с ноября по февраль
+* по пятницам начиная с мая по 10 повторений
+* по вторникам на протяжении следующих шести недель
+* каждый пн-ср на протяжении следующих двух месяцев
+* пн-вт-ср со следующего года
+* через каждую пятницу в течение следующих трех лет
+* каждую первую и последнюю среду и пятницу месяца
+* каждый вт и пт на 14 нед
+* каждый год 25 дек
 
-### Messy strings
-* Please schedule the meeting for every other tuesday at noon
-* Set an alarm for next tuesday at 11pm
+### привычные выражения
+* назначь встречу на любой вторник в полдень
+* поставь напоминание на следующий вторник на 11 вечера
 
-## Usage
+## использование
 ```python
 >>> import datetime
 >>> from recurrent.event_parser import RecurringEvent
 >>> r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1))
->>> r.parse('every day starting next tuesday until feb')
+>>> r.parse('каждый день до конца февраля')
 'DTSTART:20100105\nRRULE:FREQ=DAILY;INTERVAL=1;UNTIL=20100201'
 >>> r.is_recurring
 True
@@ -70,7 +69,7 @@ datetime.datetime(2010, 2, 2, 0, 0)
 >>>
 ```
 
-You can then use python-dateutil to work with the recurrence rules.
+можно использовать python-dateutil чтобы работать с повторениями ^_^
 ```python
 >>> from dateutil import rrule
 >>> rr = rrule.rrulestr(r.get_RFC_rrule())
@@ -80,7 +79,7 @@ datetime.datetime(2010, 1, 5, 0, 0)
 datetime.datetime(2010, 1, 26, 0, 0)
 ```
 
-You can specify a (custom) localisation to change the parsing behaviour of `parsedatetime`
+и еще вы можно настроить регион для смены формата `parsedatetime`
 ```python
 consts = parsedatetime.Constants(localeID='en_US', usePyICU=False)
 consts.use24 = True
@@ -89,20 +88,17 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 ```
 
 ## Dependencies
-Recurrent uses [parsedatetime][3] to parse dates and [python.dateutil][2] if available to optimize some results.
+Recurrent использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
 
-## Things it can't do
+## кредиты
+Recurrent вдохновлен похожей библиотекой на Ruby - Tickle от Joshua
+Lippiner, которая так же использует parsedatetime для естественного «человечного» перевода.
 
-Recurrent is regrettably quite U.S. (and completely english) centric. Contributions from other perspectives are welcome :)
-
-## Credits
-Recurrent is inspired by the similar Ruby library Tickle by Joshua
-Lippiner. It also uses the parsedatetime library for fuzzy human date
-parsing.  The handling of COUNT, BYSETPOS, BYWEEKNO, EXDATE and EXRULE,
-and the format function was supplied by Joe Cool snoopyjc@gmail.com 
+хендлеры COUNT, BYSETPOS, BYWEEKNO, EXDATE и EXRULE,
+а так же форматирование функций реализовано при участии Joe Cool snoopyjc@gmail.com 
 https://github.com/snoopyjc
 
-## Author
+## автор
 Ken Van Haren [@squaredloss](http://twitter.com/squaredloss)
 
 [1]: http://www.kanzaki.com/docs/ical/rrule.html
