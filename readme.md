@@ -10,7 +10,7 @@ rrulestr. А так же принимает такие rrules и возвращ�
 pip install git+https://github.com/awwfict/rurumi
 ```
 
-## примеры
+## наглядно
 ### конкретные даты
 * в следующий вторник 
 * завтра
@@ -48,7 +48,7 @@ pip install git+https://github.com/awwfict/rurumi
 * назначь встречу через вторник в полдень
 * поставь напоминание на следующий вторник на 11 вечера
 
-## использование
+## как использовать
 ```python
 >>> import datetime
 >>> from recurrent.event_parser import RecurringEvent
@@ -72,7 +72,7 @@ datetime.datetime(2010, 2, 2, 0, 0)
 >>>
 ```
 
-можно использовать python-dateutil чтобы работать с повторениями ^_^
+можно добавить python-dateutil чтобы работать с повторениями ^_^
 ```python
 >>> from dateutil import rrule
 >>> rr = rrule.rrulestr(r.get_RFC_rrule())
@@ -92,6 +92,8 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 
 ## зависимости
 Recurrent использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
+
+---
 
 ## благодарности
 Recurrent вдохновлен похожей библиотекой на Ruby - Tickle от Joshua
