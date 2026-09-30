@@ -14,7 +14,7 @@ holis = (
 RE_holis = [re.compile(r) for r in holis]
 RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
     'thursdays', 'fridays', 'saturdays', 'sundays']))
-RE_DOW = re.compile('(' + ')|$('.join(holis) + ')$')
+RE_DOW = re.compile('(' + ')$|('.join(holis) + ')$')
 RE_PLURAL_WEEKDAY = re.compile('weekdays|weekends|%s'%RE_PLURAL_DOW.pattern)
 weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
 'SA,SU']
