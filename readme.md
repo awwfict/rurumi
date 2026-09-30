@@ -1,10 +1,9 @@
 # Rurumi
-Rurumi - это перевод и адаптация проекта [Recurrent](https://github.com/kvh/recurrent) — англоязычного парсера, созданного для обработки событий с повторениями. его оригинальный README сохранен и доступен [вот здесь!](en_readme.md)
+Rurumi - это перевод и адаптация проекта [Recurrent](https://github.com/kvh/recurrent) — англоязычного парсера、 созданного для обработки событий с повторениями。 его оригинальный README сохранен и доступен [вот здесь!](en_readme.md)
 
-> 💌 поддержка языка в процессе. пока библиотека понимает только английские фразы, как в оригинале
+> 💌 поддержка языка в процессе。 пока библиотека понимает только английские фразы、 как в оригинале。
 
-Rurumi обращает строки типа «каждый вторник и четверг до конца этого месяца» в [RFC-compliant RRULES][1], для совмещения с календарем или [python-dateutil's][2]
-rrulestr. А так же принимает такие rrules и возвращает их описание на естественном языке.
+Rurumi обращает строки типа «каждый вторник и четверг до конца этого месяца» в [RFC-compliant RRULES][1]、 для совмещения с календарем или [python-dateutil's][2] rrulestr。 а так же принимает такие rrules и возвращает их описание на естественном языке。
 
 ```sh
 pip install git+https://github.com/awwfict/rurumi
@@ -90,18 +89,14 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 ```
 
 ## зависимости
-Rurumi, как и Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
-еще 
-
+Rurumi、 как и Recurrent、 использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результато〪в〪〪。
 ---
 
 ## благодарности
-Recurrent вдохновлен похожей Ruby-библиотекой _Tickle_ от _Joshua
-_Lippiner_, которая так же использует parsedatetime для естественного «человечного» распознавания.
+Recurrent вдохновлен похожей Ruby-библиотекой _Tickle_ от _Joshua Lippiner_、 которая так же использует parsedatetime для естественного «человечного» распознавания。
 
-хендлеры COUNT, BYSETPOS, BYWEEKNO, EXDATE и EXRULE,
-а так же форматирование функций реализовано при участии Joe Cool snoopyjc@gmail.com 
-https://github.com/snoopyjc
+хендлеры COUNT、 BYSETPOS、 BYWEEKNO、 EXDATE и EXRULE、а так же функции форматирования реализованы при участии Joe Cool snoopyjc@gmail.com 
+https://github.com/snoopyjc !
 
 ## автор
 Ken Van Haren [@squaredloss](http://twitter.com/squaredloss)
