@@ -4,7 +4,7 @@ version = '0.1.0а1'
 
 setup(name='rrmis',
     version=version,
-    description="перевод англоязычного парсера повторяющихся событий на русский !",
+    description="перевод англоязычного парсера повторяющихся событий !",
       
     classifiers=[
         'Natural Language :: Русский',
