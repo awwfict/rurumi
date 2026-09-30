@@ -11,7 +11,7 @@ setup(name='rrmis',
         'Topic :: Text Processing :: Linguistic',
         'License :: OSI Approved :: MIT License'
     ],
-    keywords='парсер рекурсия даты события NLP нлп',
+    keywords='парсер повторяющиеся даты события NLP нлп',
     author='Ken Van Haren',
     author_email='kvh@science.io',
     url='http://github.com/awwfict/rurumi',
