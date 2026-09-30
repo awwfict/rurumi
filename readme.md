@@ -1,7 +1,7 @@
 # Rurumi
 Rurumi - это перевод на русский python библиотеки [recurrent](https://github.com/kvh/recurrent) для парсинга повторяющихся событий и дат использующей обработку естественного языка. оригинальный README - [en_readme.md](en_readme.md)
 
-> 💌 поддержка русского языка в процессе. пока библиотека понимает только английские фразы, как в оригинале
+> 💌 поддержка языка в процессе. пока библиотека понимает только английские фразы, как в оригинале
 
 rurumi обращает строки типа «каждый вторник и четверг до конца этого месяца» в [RFC-compliant RRULES][1], для совмещения с календарем или [python-dateutil's][2]
 rrulestr. А так же принимает такие rrules и возвращает их описание на естественном языке.
@@ -82,7 +82,7 @@ datetime.datetime(2010, 1, 5, 0, 0)
 datetime.datetime(2010, 1, 26, 0, 0)
 ```
 
-и еще можно настроить регион для смены формата `parsedatetime`
+и еще в дополнение к вышесказанному можно настроить регион для смены формата `parsedatetime`
 ```python
 consts = parsedatetime.Constants(localeID='ru_RU', usePyICU=False)
 consts.use24 = True
@@ -91,7 +91,8 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 ```
 
 ## зависимости
-Recurrent использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
+Rurumi, как и подлинный Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
+еще 
 
 ---
 
