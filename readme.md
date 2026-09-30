@@ -1,15 +1,15 @@
 # 💟 Rurumi
 Rurumi - это перевод и адаптация проекта [Recurrent](https://github.com/kvh/recurrent) — англоязычного парсера, созданного для обработки событий с повторениями。 его оригинальный README сохранен и доступен [вот здесь!](en_readme.md)
 
-> ☘️ русские фразы поддерживаются! обратное описание (`format`) пока возвращает текст на английском。
+> 🐰 русские фразы поддерживаются! обратное описание (`format`) пока возвращает текст на английском。
 
 Rurumi обращает строки типа «каждый вторник и четверг до конца этого месяца» в [RFC-compliant RRULES][1], для совмещения с календарем или [python-dateutil's][2] rrulestr。 а так же принимает такие rrules и возвращает их описание на естественном языке。
 
 ```sh
 pip install git+https://github.com/awwfict/rurumi
 ```
-
-## 👀 наглядно
+### ︶ ⏝ ︶ ୨୧ ︶ ⏝ ︶
+## наглядно
 ### конкретные даты
 * в следующий вторник 
 * завтра
@@ -47,7 +47,8 @@ pip install git+https://github.com/awwfict/rurumi
 * назначь встречу через вторник в полдень
 * поставь напоминание на следующий вторник на 11 вечера
 
-## как это использовать ∘ ∘ ∘ ( °ヮ° ) ?
+### ︶ ⏝ ︶ ୨୧ ︶ ⏝ ︶
+## 🛠️ как всем этим пользоваться
 ```python
 >>> import datetime
 >>> from rrmis.event_parser import RecurringEvent
@@ -70,7 +71,7 @@ datetime.datetime(2010, 2, 2, 0, 0)
 'every Fri twice'
 >>>
 ```
-можно добавить python-dateutil чтобы работать с повторениями ^_^ ::
+👉🏻 можно добавить python-dateutil чтобы работать с повторениями ^_^ ::
 ```python
 >>> from dateutil import rrule
 >>> rr = rrule.rrulestr(r.get_RFC_rrule())
@@ -80,7 +81,7 @@ datetime.datetime(2010, 1, 5, 0, 0)
 datetime.datetime(2010, 1, 26, 0, 0)
 ```
 
-и еще в дополнение к вышесказанному можно настроить регион для смены формата `parsedatetime`:
+👉🏻 и еще в дополнение к вышесказанному можно настроить регион для смены формата `parsedatetime`:
 ```python
 consts = parsedatetime.Constants(localeID='ru_RU', usePyICU=False)
 consts.use24 = True
@@ -88,6 +89,7 @@ consts.use24 = True
 r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=consts)
 ```
 
+### ︶ ⏝ ︶ ୨୧ ︶ ⏝ ︶
 ## 🤓 как это устроено
 русская фраза сначала переводится в английскую (`src/rrmis/ru.py`), а дальше её разбирает оригинальный парсер Recurrent:
 ```
@@ -110,15 +112,15 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 | `WORDS` | — | остальные слова: «каждый» → every, «до» → until… |
 | `PHRASES` | — | фразы из нескольких слов: «раз в неделю», «в 9 утра», «до конца месяца»。 порядок важен |
 
+### ︶ ⏝ ︶ ୨୧ ︶ ⏝ ︶
 ## 🐟 зависимости
 Rurumi, как и Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов。 для русских падежей используется [pymorphy3][5]。
 
----
-
+### ︶ ⏝ ︶ ୨୧ ︶ ⏝ ︶
 ## 💕 благодарности
-Recurrent вдохновлен похожей Ruby-библиотекой _Tickle_ от _Joshua Lippiner_, которая так же использует parsedatetime для естественного «человечного» распознавания。
+* Recurrent вдохновлен похожей Ruby-библиотекой _Tickle_ от _Joshua Lippiner_, которая так же использует parsedatetime для естественного «человечного» распознавания。
 
-хендлеры COUNT, BYSETPOS, BYWEEKNO, EXDATE и EXRULE,а так же функции форматирования реализованы при участии Joe Cool snoopyjc@gmail.com 
+* хендлеры COUNT, BYSETPOS, BYWEEKNO, EXDATE и EXRULE,а так же функции форматирования реализованы при участии Joe Cool snoopyjc@gmail.com 
 https://github.com/snoopyjc !
 
 ## 🪪 автор
