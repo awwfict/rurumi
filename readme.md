@@ -47,7 +47,7 @@ pip install git+https://github.com/awwfict/rurumi
 * назначь встречу через вторник в полдень
 * поставь напоминание на следующий вторник на 11 вечера
 
-## 🛠️ как использовать
+## как это использовать ∘ ∘ ∘ ( °ヮ° ) ?
 ```python
 >>> import datetime
 >>> from rrmis.event_parser import RecurringEvent
