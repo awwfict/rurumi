@@ -7,15 +7,15 @@ setup(name='rrmis',
     description="перевод англоязычного парсера повторяющихся событий !",
       
     classifiers=[
-        'Natural Language :: Русский',
+        'Natural Language :: Russian',
         'Topic :: Text Processing :: Linguistic',
-        'License :: OSI Approved :: BSD License'
+        'License :: OSI Approved :: MIT License'
     ],
     keywords='парсер рекурсия даты события NLP нлп',
     author='Ken Van Haren',
     author_email='kvh@science.io',
     url='http://github.com/awwfict/rurumi',
-    license='BSD',
+    license='MIT',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     zip_safe=False,
