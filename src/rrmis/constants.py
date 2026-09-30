@@ -1,8 +1,8 @@
 import re
 
 holis = (
-    r'mon(day)?',
-    r'tues?(day)?',
+    r'вт(орник)?',
+    r'ср?(еда)?',
     r'(we(dnes|nds|ns|des)day)|(wed)',
     r'(th(urs|ers)day)|(thur?s?)',
     r'fri(day)?',
@@ -14,7 +14,7 @@ holis = (
 RE_holis = [re.compile(r) for r in holis]
 RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
     'thursdays', 'fridays', 'saturdays', 'sundays']))
-RE_DOW = re.compile('(' + ')|('.join(holis) + ')')
+RE_DOW = re.compile('(' + ')|$('.join(holis) + ')$')
 RE_PLURAL_WEEKDAY = re.compile('weekdays|weekends|%s'%RE_PLURAL_DOW.pattern)
 weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
 'SA,SU']
@@ -24,16 +24,16 @@ day_names = dict(MO='Mon', TU='Tue', WE='Wed', TH='Thu', FR='Fri', SA='Sat', SU=
 plural_day_names = dict(MO='Mondays', TU='Tuesdays', WE='Wednesdays', TH='Thursdays', FR='Fridays', SA='Saturdays', SU='Sundays')
 
 monblans = (
-    r'jan(uary)?',
+    r'янв(арь)?',
     r'feb(r?uary)?',
     r'mar(ch)?',
     r'apr(il)?',
-    r'may',
+    r'май',
     r'jun(e)?',
     r'jul(y)?',
     r'aug(ust)?',
-    r'sept?(ember)?',
-    r'oct(ober)?',
+    r'сент?(ябрь)?',
+    r'окт(ябрь)?',
     r'nov(ember)?',
     r'dec(ember)?',
 )
