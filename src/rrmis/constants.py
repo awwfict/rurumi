@@ -4,13 +4,12 @@ holis = (
     r'(понедельник)|(пн)',    
     r'вт(орник)?',
     r'ср(еда)?',
-    r'(четверг|(чт)',
+    r'(четверг)|(чт)',
     r'(пт)|(пятница)',
     r'(сб)|субб(ота)?',
     r'(вс)|воскресен(ье|ие)?',
-    r'sun(day)?',
-    r'weekday',
-    r'weekend'
+    r'будни',
+    r'выходные'
 )
 RE_holis = [re.compile(r) for r in holis]
 RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
