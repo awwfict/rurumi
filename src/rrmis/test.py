@@ -2,9 +2,9 @@ import unittest
 import datetime
 from dateutil import rrule
 
-from recurrent.event_parser import RecurringEvent
-from recurrent import parse as rparse
-from recurrent import format as rformat
+from rrmis.event_parser import RecurringEvent
+from rrmis import parse as rparse
+from rrmis import format as rformat
 
 NOW = datetime.datetime(2010, 1, 1)
 TOMORROW = (NOW+datetime.timedelta(days=1))

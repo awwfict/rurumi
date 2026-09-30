@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 version = '0.4.0'
 
-setup(name='recurrent',
+setup(name='rurumi',
       version=version,
       description="Natural language parsing and deparsing of recurring events",
       long_description="See http://github.com/kvh/recurrent",

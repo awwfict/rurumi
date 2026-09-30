@@ -10,11 +10,11 @@ try:
 except ImportError:     # pragma nocover
     import parsedatetime
 
-from recurrent.constants import *
+from rrmis.constants import *
 
 DEBUG=False
 
-log = logging.getLogger('recurrent')
+log = logging.getLogger('rrmis')
 if DEBUG:               # pragma nocover
     log.setLevel(logging.DEBUG)
     log.addHandler(logging.StreamHandler(sys.stderr))
