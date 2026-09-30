@@ -41,7 +41,7 @@ RE_monblans = [re.compile(r + '$') for r in monblans]
 RE_MOY = re.compile('(' + ')$|('.join(monblans) + ')$')
 RE_MOY_NOT_ANCHORED = re.compile('(' + ')|('.join(monblans) + ')')
 
-units = ['день', 'неделя', 'месяц', 'год', 'час', 'минута', 'мин', 'с', 'секунд'] # Issue #3
+units = ['день', 'неделя', 'месяц', 'год', 'час', 'минута', 'мин', 'сек', 'секунд'] # Issue #3
 units_freq = ['ежедневно', 'еженедельно', 'ежемесячно', 'ежегодно', 'ежечасно', 'ежеминутно', 'поминутно', 'ежесекундно', 'посекундно'] # Issue #3
 RE_UNITS = re.compile(r'^(' + 's?|'.join(units) + '?)$')
 
