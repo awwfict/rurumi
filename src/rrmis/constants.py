@@ -12,67 +12,67 @@ holis = (
     r'выходн(ой|ые)'
 )
 RE_holis = [re.compile(r) for r in holis]
-RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
-    'thursdays', 'fridays', 'saturdays', 'sundays']))
+RE_PLURAL_DOW = re.compile('|'.join( ['понедельникам', 'вторникам', 'средам',
+    'четвергам', 'пятницам', 'субботам', 'воскресеньям']))
 RE_DOW = re.compile('(' + ')$|('.join(holis) + ')$')
-RE_PLURAL_WEEKDAY = re.compile('weekdays|weekends|%s'%RE_PLURAL_DOW.pattern)
-weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
-'SA,SU']
-ordered_weekday_codes = ('', 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA')
-next_day = dict(MO='TU', TU='WE', WE='TH', TH='FR', FR='SA', SA='SU', SU='MO')
-day_names = dict(MO='Mon', TU='Tue', WE='Wed', TH='Thu', FR='Fri', SA='Sat', SU='Sun')
-plural_day_names = dict(MO='Mondays', TU='Tuesdays', WE='Wednesdays', TH='Thursdays', FR='Fridays', SA='Saturdays', SU='Sundays')
+RE_PLURAL_WEEKDAY = re.compile('будни|выходные|выходной|%s'%RE_PLURAL_DOW.pattern)
+weekday_codes = [ 'пн','вт','ср','чт','пт', 'сб', 'вс', 'пн,вт,ср,чт,пт',
+'сб,вс']
+ordered_weekday_codes = ('', 'вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб')
+next_day = dict(MO='вт', TU='ср', WE='чт', TH='пт', FR='сб', SA='вс', SU='пн')
+day_names = dict(MO='пн', TU='вт', WE='ср', TH='чт', FR='пт', SA='сб', SU='вс')
+plural_day_names = dict(MO='понедельник', TU='вторник', WE='среду', TH='четверг', FR='пятницу', SA='субботу', SU='воскресенье')
 
 monblans = (
     r'янв(арь)?',
-    r'feb(r?uary)?',
-    r'mar(ch)?',
-    r'apr(il)?',
+    r'фев(р?аль)?',
+    r'март',
+    r'апр(ель)?',
     r'май',
-    r'jun(e)?',
-    r'jul(y)?',
-    r'aug(ust)?',
+    r'июнь',
+    r'июль',
+    r'авг(уст)?',
     r'сент?(ябрь)?',
     r'окт(ябрь)?',
-    r'nov(ember)?',
-    r'dec(ember)?',
+    r'нояб(рь)?',
+    r'дек(абрь)?',
 )
 RE_monblans = [re.compile(r + '$') for r in monblans]
 RE_MOY = re.compile('(' + ')$|('.join(monblans) + ')$')
 RE_MOY_NOT_ANCHORED = re.compile('(' + ')|('.join(monblans) + ')')
 
-units = ['day', 'week', 'month', 'year', 'hour', 'minute', 'min', 'sec', 'seconds'] # Issue #3
-units_freq = ['daily', 'weekly', 'monthly', 'yearly', 'hourly', 'minutely', 'minutely', 'secondly', 'secondly'] # Issue #3
+units = ['день', 'неделя', 'месяц', 'год', 'час', 'минута', 'мин', 'с', 'секунд'] # Issue #3
+units_freq = ['ежедневно', 'еженедельно', 'ежемесячно', 'ежегодно', 'ежечасно', 'ежеминутно', 'поминутно', 'ежесекундно', 'посекундно'] # Issue #3
 RE_UNITS = re.compile(r'^(' + 's?|'.join(units) + '?)$')
 
 ordinals = (
-    r'first',
-    r'second',
-    r'third',
-    r'fourth',
-    r'fifth',
-    r'sixth',
-    r'seventh',
-    r'eighth',
-    r'ninth',
-    r'tenth',
-    r'last',        # Issue #18
+    r'первый',
+    r'второй',
+    r'третий',
+    r'четвертый',
+    r'пятй',
+    r'шестой',
+    r'седьмой',
+    r'восьмой',
+    r'девятый',
+    r'десятый',
+    r'последний',        # Issue #18
     )
 RE_ORDINALS = [re.compile(r + '$') for r in ordinals]
 RE_ORDINAL = re.compile(r'\d+(st|nd|rd|th)$|' + '$|'.join(ordinals))
 RE_ORDINAL_NOT_ANCHORED = re.compile(r'\d+(st|nd|rd|th)|' + '|'.join(ordinals))
 numbers = (
-    r'zero',
-    r'one',
-    r'two',
-    r'three',
-    r'four',
-    r'five',
-    r'six',
-    r'seven',
-    r'eight',
-    r'nine',
-    r'ten',
+    r'ноль',
+    r'один',
+    r'два',
+    r'три',
+    r'четыре',
+    r'пять',
+    r'шесть',
+    r'семь',
+    r'восемь',
+    r'девять',
+    r'десять',
     )
 RE_NUMBERS = [re.compile(r + '$') for r in numbers]
 RE_NUMBER = re.compile('(' + '|'.join(numbers) + r')$|(\d+)$')
