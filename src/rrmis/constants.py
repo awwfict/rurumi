@@ -16,16 +16,16 @@ RE_PLURAL_DOW = re.compile('|'.join( ['понедельникам', 'вторн�
     'четвергам', 'пятницам', 'субботам', 'воскресеньям']))
 RE_DOW = re.compile('(' + ')$|('.join(holis) + ')$')
 RE_PLURAL_WEEKDAY = re.compile('будни|выходные|выходной|%s'%RE_PLURAL_DOW.pattern)
-weekday_codes = [ 'пн','вт','ср','чт','пт', 'сб', 'вс', 'пн,вт,ср,чт,пт',
-'сб,вс']
-ordered_weekday_codes = ('', 'вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб')
-next_day = dict(MO='вт', TU='ср', WE='чт', TH='пт', FR='сб', SA='вс', SU='пн')
+weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
+'SA,SU']
+ordered_weekday_codes = ('', 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA')
+next_day = dict(MO='TU', TU='WE', WE='TH', TH='FR', FR='SA', SA='SU', SU='MO')
 day_names = dict(MO='пн', TU='вт', WE='ср', TH='чт', FR='пт', SA='сб', SU='вс')
 plural_day_names = dict(MO='понедельник', TU='вторник', WE='среду', TH='четверг', FR='пятницу', SA='субботу', SU='воскресенье')
 
 monblans = (
     r'янв(арь)?',
-    r'февр(аль)?',
+    r'фев(р(аль)?)?',
     r'март',
     r'апр(ель)?',
     r'май',
@@ -42,7 +42,7 @@ RE_MOY = re.compile('(' + ')$|('.join(monblans) + ')$')
 RE_MOY_NOT_ANCHORED = re.compile('(' + ')|('.join(monblans) + ')')
 
 units = ['день', 'неделя', 'месяц', 'год', 'час', 'минута', 'мин', 'сек', 'секунд'] # Issue #3
-units_freq = ['ежедневно', 'еженедельно', 'ежемесячно', 'ежегодно', 'ежечасно', 'ежеминутно', 'поминутно', 'ежесекундно', 'посекундно'] # Issue #3
+units_freq = ['daily', 'weekly', 'monthly', 'yearly', 'hourly', 'minutely', 'minutely', 'secondly', 'secondly'] # Issue #3
 RE_UNITS = re.compile(r'^(' + 's?|'.join(units) + '?)$')
 
 ordinals = (
@@ -78,12 +78,12 @@ RE_NUMBERS = [re.compile(r + '$') for r in numbers]
 RE_NUMBER = re.compile('(' + '|'.join(numbers) + r')$|(\d+)$')
 RE_NUMBER_NOT_ANCHORED = re.compile('(' + '|'.join(numbers) + r')|(\d+)')
 
-RE_EVERY = re.compile(r'(каждый|раз в)$')
+RE_EVERY = re.compile(r'(каждый)$')
 
 RE_THROUGH = re.compile(r'(по|до)$')
 
 RE_DAILY = re.compile(r'ежедневно|каждодневно')
-RE_RECURRING_UNIT = re.compile(r'wеженедельно|ежемесячно|ежегодно')
+RE_RECURRING_UNIT = re.compile(r'еженедельно|ежемесячно|ежегодно')
 
 # getters
 def get_number(s):
@@ -122,4 +122,3 @@ def get_unit_freq(s):
         if unit in s:
             return units_freq[i]
     raise ValueError        # pragma nocover
-
