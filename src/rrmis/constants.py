@@ -78,12 +78,12 @@ RE_NUMBERS = [re.compile(r + '$') for r in numbers]
 RE_NUMBER = re.compile('(' + '|'.join(numbers) + r')$|(\d+)$')
 RE_NUMBER_NOT_ANCHORED = re.compile('(' + '|'.join(numbers) + r')|(\d+)')
 
-RE_EVERY = re.compile(r'(every|each|once)$')
+RE_EVERY = re.compile(r'(каждый|раз в)$')
 
-RE_THROUGH = re.compile(r'(through|thru)$')
+RE_THROUGH = re.compile(r'(по|до)$')
 
-RE_DAILY = re.compile(r'daily|everyday')
-RE_RECURRING_UNIT = re.compile(r'weekly|monthly|yearly')
+RE_DAILY = re.compile(r'ежедневно|каждодневно')
+RE_RECURRING_UNIT = re.compile(r'wеженедельно|ежемесячно|ежегодно')
 
 # getters
 def get_number(s):
