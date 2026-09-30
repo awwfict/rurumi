@@ -1,12 +1,13 @@
 import re
 
 holis = (
+    r'(понедельник)|(пн)',    
     r'вт(орник)?',
-    r'ср?(еда)?',
-    r'(we(dnes|nds|ns|des)day)|(wed)',
-    r'(th(urs|ers)day)|(thur?s?)',
-    r'fri(day)?',
-    r'sat([ue]rday)?',
+    r'ср(еда)?',
+    r'(четверг|(чт)',
+    r'(пт)|(пятница)',
+    r'(сб)|субб(ота)?',
+    r'(вс)|воскресен(ье|ие)?',
     r'sun(day)?',
     r'weekday',
     r'weekend'
