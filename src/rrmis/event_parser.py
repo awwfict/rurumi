@@ -625,7 +625,7 @@ class RecurringEvent(object):
                 # of two things, weekly or biweekly
                 self.freq = 'weekly'
                 self.interval = plural_weekday_interval()
-                for i, dow in enumerate(RE_holidays):
+                for i, dow in enumerate(RE_holis):
                     if dow.search(s):
                         #this supports "thursdays and fridays"
                         self.weekdays.append(weekday_codes[i])
