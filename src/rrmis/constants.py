@@ -84,6 +84,7 @@ RE_THROUGH = re.compile(r'(по|до)$')
 
 RE_DAILY = re.compile(r'ежедневно|каждодневно')
 RE_RECURRING_UNIT = re.compile(r'еженедельно|ежемесячно|ежегодно')
+recurring_unit_freq = dict(еженедельно='weekly', ежемесячно='monthly', ежегодно='yearly')   # слово -> частота RRULE
 
 # getters
 def get_number(s):

@@ -12,6 +12,10 @@ except ImportError:     # pragma nocover
 
 from rrmis.constants import *
 
+import pymorphy3
+
+morph = pymorphy3.MorphAnalyzer()   # создаётся один раз: загрузка словаря медленная
+
 DEBUG=False
 
 log = logging.getLogger('rrmis')
@@ -66,7 +70,20 @@ def normalize(s):
     s = re.sub(r',', ' and ', s)            # Change all other commas to ' and '
     s = re.sub(r'[^\w\s\./:-]', '', s)      # Allow . for international formatting
     s = re.sub(r'\s+', ' ', s)
+    s = ' '.join(to_normal_form(w) for w in s.split())
     return s
+
+RE_KEEP_AS_IS = [RE_DOW, RE_PLURAL_WEEKDAY, RE_MOY]
+
+def to_normal_form(word):
+    # слово, которое уже узнаётся регулярками (сокращения, «по понедельникам»), не трогаем:
+    # pymorphy3 портит сокращения («сент» -> «сента») и теряет множественное число
+    if any(r.fullmatch(word) for r in RE_KEEP_AS_IS):
+        return word
+    # цифры, время, даты («15:00», «12», «3-го») pymorphy3 не нужны
+    if any(ch.isdigit() for ch in word):
+        return word
+    return morph.parse(word)[0].normal_form
 
 def handle_begin_end(s):                # Issue #12
     def sub_be1(m):
@@ -678,7 +695,7 @@ class RecurringEvent(object):
                       (self.freq != 'weekly' and self.freq != 'monthly' and self.freq != 'yearly'):   # Issue #18: Handle every year on the 40th day; every month on the 20th day
                         self.freq = get_unit_freq(tokens[index].text)
                 elif tokens[index].type_ == 'recurring_unit':   # weekly, monthly, yearly
-                    self.freq = tokens[index].text
+                    self.freq = recurring_unit_freq[tokens[index].text]
                 elif tokens[index].type_ == 'ordinal':
                     ords = [get_ordinal_index(tokens[index].text)]
 

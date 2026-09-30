@@ -21,6 +21,7 @@ setup(name='rrmis',
     zip_safe=False,
     install_requires=[
         'parsedatetime',
+        'pymorphy3',
     ],
     python_requires='>3.6.0',
     )
