@@ -89,7 +89,8 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 ```
 
 ## зависимости
-Rurumi, как и Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результато〪в〪〪。
+Rurumi, как и Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов。
+
 ---
 
 ## благодарности
