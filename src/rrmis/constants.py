@@ -1,6 +1,6 @@
 import re
 
-DoWs = (
+holidays = (
     r'mon(day)?',
     r'tues?(day)?',
     r'(we(dnes|nds|ns|des)day)|(wed)',
@@ -11,10 +11,10 @@ DoWs = (
     r'weekday',
     r'weekend'
 )
-RE_DOWS = [re.compile(r) for r in DoWs]
+RE_holidays = [re.compile(r) for r in holidays]
 RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
     'thursdays', 'fridays', 'saturdays', 'sundays']))
-RE_DOW = re.compile('(' + ')|('.join(DoWs) + ')')
+RE_DOW = re.compile('(' + ')|('.join(holidays) + ')')
 RE_PLURAL_WEEKDAY = re.compile('weekdays|weekends|%s'%RE_PLURAL_DOW.pattern)
 weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
 'SA,SU']
@@ -23,7 +23,7 @@ next_day = dict(MO='TU', TU='WE', WE='TH', TH='FR', FR='SA', SA='SU', SU='MO')
 day_names = dict(MO='Mon', TU='Tue', WE='Wed', TH='Thu', FR='Fri', SA='Sat', SU='Sun')
 plural_day_names = dict(MO='Mondays', TU='Tuesdays', WE='Wednesdays', TH='Thursdays', FR='Fridays', SA='Saturdays', SU='Sundays')
 
-MoYs = (
+monblans = (
     r'jan(uary)?',
     r'feb(r?uary)?',
     r'mar(ch)?',
@@ -37,9 +37,9 @@ MoYs = (
     r'nov(ember)?',
     r'dec(ember)?',
 )
-RE_MOYS = [re.compile(r + '$') for r in MoYs]
-RE_MOY = re.compile('(' + ')$|('.join(MoYs) + ')$')
-RE_MOY_NOT_ANCHORED = re.compile('(' + ')|('.join(MoYs) + ')')
+RE_monblans = [re.compile(r + '$') for r in monblans]
+RE_MOY = re.compile('(' + ')$|('.join(monblans) + ')$')
+RE_MOY_NOT_ANCHORED = re.compile('(' + ')|('.join(monblans) + ')')
 
 units = ['day', 'week', 'month', 'year', 'hour', 'minute', 'min', 'sec', 'seconds'] # Issue #3
 units_freq = ['daily', 'weekly', 'monthly', 'yearly', 'hourly', 'minutely', 'minutely', 'secondly', 'secondly'] # Issue #3
@@ -106,13 +106,13 @@ def get_ordinal_index(s):
     raise ValueError        # pragma nocover
 
 def get_DoW(s):
-    for i, dow in enumerate(RE_DOWS):
+    for i, dow in enumerate(RE_holidays):
         if dow.search(s):
             return weekday_codes[i].split(',')
     raise ValueError        # pragma nocover
 
 def get_MoY(s):
-    for i, moy in enumerate(RE_MOYS):
+    for i, moy in enumerate(RE_monblans):
         if moy.search(s):
             return i + 1
     raise ValueError        # pragma nocover
