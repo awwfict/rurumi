@@ -90,14 +90,14 @@ r = RecurringEvent(now_date=datetime.datetime(2010, 1, 1), parse_constants=const
 ```
 
 ## зависимости
-Rurumi, как и родительский Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
+Rurumi, как и Recurrent, использует [parsedatetime][3] для парсинга дат и [python.dateutil][2] (если доступно) для оптимизации некоторых результатов
 еще 
 
 ---
 
 ## благодарности
-Recurrent вдохновлен похожей библиотекой на Ruby - Tickle от Joshua
-Lippiner, которая так же использует parsedatetime для естественного «человечного» перевода.
+Recurrent вдохновлен похожей Ruby-библиотекой _Tickle_ от _Joshua
+_Lippiner_, которая так же использует parsedatetime для естественного «человечного» распознавания.
 
 хендлеры COUNT, BYSETPOS, BYWEEKNO, EXDATE и EXRULE,
 а так же форматирование функций реализовано при участии Joe Cool snoopyjc@gmail.com 
