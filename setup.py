@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.1.0а1'
+version = '0.1.0a1'
 
 setup(name='rrmis',
     version=version,
