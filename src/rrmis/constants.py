@@ -1,6 +1,6 @@
 import re
 
-holidays = (
+holis = (
     r'mon(day)?',
     r'tues?(day)?',
     r'(we(dnes|nds|ns|des)day)|(wed)',
@@ -11,10 +11,10 @@ holidays = (
     r'weekday',
     r'weekend'
 )
-RE_holidays = [re.compile(r) for r in holidays]
+RE_holis = [re.compile(r) for r in holis]
 RE_PLURAL_DOW = re.compile('|'.join( ['mondays', 'tuesdays', 'wednesdays',
     'thursdays', 'fridays', 'saturdays', 'sundays']))
-RE_DOW = re.compile('(' + ')|('.join(holidays) + ')')
+RE_DOW = re.compile('(' + ')|('.join(holis) + ')')
 RE_PLURAL_WEEKDAY = re.compile('weekdays|weekends|%s'%RE_PLURAL_DOW.pattern)
 weekday_codes = [ 'MO','TU','WE','TH','FR', 'SA', 'SU', 'MO,TU,WE,TH,FR',
 'SA,SU']
@@ -106,7 +106,7 @@ def get_ordinal_index(s):
     raise ValueError        # pragma nocover
 
 def get_DoW(s):
-    for i, dow in enumerate(RE_holidays):
+    for i, dow in enumerate(RE_holis):
         if dow.search(s):
             return weekday_codes[i].split(',')
     raise ValueError        # pragma nocover
