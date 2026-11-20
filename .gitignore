@@ -6,3 +6,7 @@ build
 .pytest_cache
 htmlcov
 *.swp
+# Build artifacts
+*.egg-info/
+build/
+dist/
