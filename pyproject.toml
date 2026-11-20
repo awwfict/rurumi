@@ -1,0 +1,35 @@
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rrmis"
+version = "0.1.0a1"
+description = "перевод англоязычного парсера повторяющихся событий !"
+readme = "readme.md"
+requires-python = ">3.6.0"
+license = { text = "MIT" }
+authors = [
+    { name = "Ken Van Haren", email = "kvh@science.io" }
+]
+keywords = ["парсер", "повторяющиеся даты", "события", "NLP", "нлп"]
+classifiers = [
+    "Natural Language :: Russian",
+    "Topic :: Text Processing :: Linguistic",
+    "License :: OSI Approved :: MIT License"
+]
+dependencies = [
+    "parsedatetime",
+    "pymorphy3"
+]
+
+[project.urls]
+Homepage = "http://github.com/awwfict/rurumi"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
